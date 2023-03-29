@@ -57,6 +57,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>HAZQH_PLATFORM_WINDOWS;HAZQH_BUILD_DLL;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)HazQh\vendor\spdlog\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -71,6 +72,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>HAZQH_PLATFORM_WINDOWS;HAZQH_BUILD_DLL;HAZQH_PLATFORM_WINDOWS;HAZQH_BUILD_DLL;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)HazQh\vendor\spdlog\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -82,11 +84,13 @@
   <ItemGroup>
     <ClInclude Include="Src\HazQh\Applicaiton.h" />
     <ClInclude Include="Src\HazQh\Core.h" />
-    <ClInclude Include="Src\HazQh.h" />
     <ClInclude Include="Src\HazQh\EntryPoint.h" />
+    <ClInclude Include="Src\HazQh.h" />
+    <ClInclude Include="Src\HazQh\Log.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\HazQh\Applicaiton.cpp" />
+    <ClCompile Include="Src\HazQh\Log.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -21,15 +21,21 @@
     <ClInclude Include="Src\HazQh\Core.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="Src\HazQh\EntryPoint.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
     <ClInclude Include="Src\HazQh.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Src\HazQh\EntryPoint.h">
+    <ClInclude Include="Src\HazQh\Log.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\HazQh\Applicaiton.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\HazQh\Log.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

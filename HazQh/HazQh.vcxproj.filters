@@ -7,6 +7,12 @@
     <Filter Include="HazQh\Events">
       <UniqueIdentifier>{C5C7D233-B12A-62D8-5AB0-9A8E46F22D5B}</UniqueIdentifier>
     </Filter>
+    <Filter Include="HazQh\Platform">
+      <UniqueIdentifier>{75D4C18F-61A2-B595-4A36-26BC36A391FA}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HazQh\Platform\Windows">
+      <UniqueIdentifier>{AF234391-9B1D-6CE3-848A-02F47023D24F}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\HazQh.h" />
@@ -31,6 +37,12 @@
     <ClInclude Include="src\HazQh\Log.h">
       <Filter>HazQh</Filter>
     </ClInclude>
+    <ClInclude Include="src\HazQh\Platform\Windows\WindowsWindow.h">
+      <Filter>HazQh\Platform\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HazQh\Window.h">
+      <Filter>HazQh</Filter>
+    </ClInclude>
     <ClInclude Include="src\HzPch.h" />
   </ItemGroup>
   <ItemGroup>
@@ -39,6 +51,9 @@
     </ClCompile>
     <ClCompile Include="src\HazQh\Log.cpp">
       <Filter>HazQh</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HazQh\Platform\Windows\WindowsWindow.cpp">
+      <Filter>HazQh\Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\HzPch.cpp" />
   </ItemGroup>

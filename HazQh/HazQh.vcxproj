@@ -80,7 +80,7 @@
       <PrecompiledHeaderFile>HzPch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>HAZQH_PLATFORM_WINDOWS;HAZQH_BUILD_DLL;HZ_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>Src;vendor\spdlog\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>Src;vendor\spdlog\include;vendor\GLFW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -90,6 +90,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ImportLibrary>..\bin\Debug-windows-x86_64\HazQh\HazQh.lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
@@ -102,7 +103,7 @@
       <PrecompiledHeaderFile>HzPch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>HAZQH_PLATFORM_WINDOWS;HAZQH_BUILD_DLL;HZ_Release;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>Src;vendor\spdlog\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>Src;vendor\spdlog\include;vendor\GLFW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -112,6 +113,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ImportLibrary>..\bin\Release-windows-x86_64\HazQh\HazQh.lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
@@ -124,7 +126,7 @@
       <PrecompiledHeaderFile>HzPch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>HAZQH_PLATFORM_WINDOWS;HAZQH_BUILD_DLL;HZ_Dist;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>Src;vendor\spdlog\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>Src;vendor\spdlog\include;vendor\GLFW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -134,6 +136,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ImportLibrary>..\bin\Dist-windows-x86_64\HazQh\HazQh.lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
@@ -149,14 +152,22 @@
     <ClInclude Include="src\HazQh\Events\Event.h" />
     <ClInclude Include="src\HazQh\Events\KeyEvent.h" />
     <ClInclude Include="src\HazQh\Log.h" />
+    <ClInclude Include="src\HazQh\Platform\Windows\WindowsWindow.h" />
+    <ClInclude Include="src\HazQh\Window.h" />
     <ClInclude Include="src\HzPch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\HazQh\Applicaiton.cpp" />
     <ClCompile Include="src\HazQh\Log.cpp" />
+    <ClCompile Include="src\HazQh\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\HzPch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="vendor\GLFW\GLFW.vcxproj">
+      <Project>{154B857C-0182-860D-AA6E-6C109684020F}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

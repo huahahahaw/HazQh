@@ -1,3 +1,6 @@
 [submodule "HazQh/vendor/spdlog"]
 	path = HazQh/vendor/spdlog
 	url = https://github.com/gabime/spdlog
+[submodule "HazQh/vendor/GLFW"]
+	path = HazQh/vendor/GLFW
+	url = https://github.com/huahahahaw/glfwForHazQh

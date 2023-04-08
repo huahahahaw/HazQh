@@ -4,6 +4,9 @@
     <Filter Include="HazQh">
       <UniqueIdentifier>{01274D0D-6D3B-75BE-36BD-181EA29071EF}</UniqueIdentifier>
     </Filter>
+    <Filter Include="HazQh\Events">
+      <UniqueIdentifier>{C5C7D233-B12A-62D8-5AB0-9A8E46F22D5B}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\HazQh.h" />
@@ -16,9 +19,19 @@
     <ClInclude Include="src\HazQh\EntryPoint.h">
       <Filter>HazQh</Filter>
     </ClInclude>
+    <ClInclude Include="src\HazQh\Events\ApplicationEvent.h">
+      <Filter>HazQh\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HazQh\Events\Event.h">
+      <Filter>HazQh\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HazQh\Events\KeyEvent.h">
+      <Filter>HazQh\Events</Filter>
+    </ClInclude>
     <ClInclude Include="src\HazQh\Log.h">
       <Filter>HazQh</Filter>
     </ClInclude>
+    <ClInclude Include="src\HzPch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\HazQh\Applicaiton.cpp">
@@ -27,5 +40,6 @@
     <ClCompile Include="src\HazQh\Log.cpp">
       <Filter>HazQh</Filter>
     </ClCompile>
+    <ClCompile Include="src\HzPch.cpp" />
   </ItemGroup>
 </Project>

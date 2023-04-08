@@ -18,6 +18,9 @@ project "HazQh"
     targetdir ("bin/" .. outputdir .. "/%{prj.name}")
     objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
+    pchheader "HzPch.h"
+    pchsource "HazQh/src/HzPch.cpp"
+
     files
     {
         "%{prj.name}/src/**.h",
@@ -26,6 +29,7 @@ project "HazQh"
 
     includedirs
     {
+        "%{prj.name}/Src",
         "%{prj.name}/vendor/spdlog/include"
     }
 

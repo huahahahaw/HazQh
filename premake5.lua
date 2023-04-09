@@ -53,7 +53,7 @@ project "HazQh"
         defines
         {
             "HAZQH_PLATFORM_WINDOWS",
-            "HAZQH_BUILD_DLL"
+            "HAZQH_BUILD_DLL",
         }
 
         postbuildcommands
@@ -64,6 +64,10 @@ project "HazQh"
     filter "configurations:Debug"
         defines "HZ_DEBUG"
         symbols "On"
+        defines
+        {
+            "HZ_ENABLE_ASSERTS",
+        }
 
     filter "configurations:Release"
         defines "HZ_Release"

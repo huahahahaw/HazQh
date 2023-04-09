@@ -1,6 +1,7 @@
 #pragma once
 #include "Core.h"
 #include "Window.h"
+#include "Events/ApplicationEvent.h"
 
 namespace HazQh 
 {
@@ -12,6 +13,9 @@ namespace HazQh
 		Applicaiton();
 		virtual ~Applicaiton();
 
+		void OnEvent(Event& e);
+
+		bool OnWindowClose(WindowCloseEvent& event);
 	private:
 		bool m_Running = true;
 

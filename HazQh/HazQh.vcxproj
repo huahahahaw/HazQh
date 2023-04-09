@@ -79,7 +79,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>HzPch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>HAZQH_PLATFORM_WINDOWS;HAZQH_BUILD_DLL;HZ_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>HAZQH_PLATFORM_WINDOWS;HAZQH_BUILD_DLL;HZ_DEBUG;HZ_ENABLE_ASSERTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>Src;vendor\spdlog\include;vendor\GLFW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
@@ -151,6 +151,7 @@
     <ClInclude Include="src\HazQh\Events\ApplicationEvent.h" />
     <ClInclude Include="src\HazQh\Events\Event.h" />
     <ClInclude Include="src\HazQh\Events\KeyEvent.h" />
+    <ClInclude Include="Src\HazQh\Events\MouseEvent.h" />
     <ClInclude Include="src\HazQh\Log.h" />
     <ClInclude Include="src\HazQh\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\HazQh\Window.h" />

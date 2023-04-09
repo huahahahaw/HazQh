@@ -1,9 +1,16 @@
 #include "HzPch.h"
 #include "WindowsWindow.h"
+#include "HazQh/Events/ApplicationEvent.h"
+#include "HazQh/Events/MouseEvent.h"
+#include "HazQh/Events/KeyEvent.h"
 
 namespace HazQh
 {
 	static bool s_GLFWInitialized = false;
+	static void GLFWErrorCallback(int error_code, const char* description)
+	{
+		HZ_CORE_ERROR("GLFWErrorCallback : ({0}),{1}", error_code, description);
+	}
 
 	Window* Window::Create(const WindowProps& props)
 	{
@@ -40,9 +47,14 @@ namespace HazQh
 		m_Data.VSync = enabled;
 	}
 
-	void WindowsWindow::IsVsync() const
+	bool WindowsWindow::IsVsync() const
 	{
-		throw std::logic_error("The method or operation is not implemented.");
+		return m_Data.VSync;
+	}
+
+	void WindowsWindow::SetEventCallback(const EventCallbackFn EventCallback)
+	{
+		m_Data.EventCallback = EventCallback;
 	}
 
 	void WindowsWindow::Init(const WindowProps& props)
@@ -56,7 +68,7 @@ namespace HazQh
 		{
 			bool success = glfwInit();
 			HZ_CORE_ASSERT(success, "Could not intialize GLFW!");
-
+			glfwSetErrorCallback(GLFWErrorCallback);
 			s_GLFWInitialized = true;
 		}
 
@@ -64,6 +76,86 @@ namespace HazQh
 		glfwMakeContextCurrent(m_Window);
 		glfwSetWindowUserPointer(m_Window, &m_Data);
 		SetVSync(true);
+
+		glfwSetWindowSizeCallback(m_Window, [](GLFWwindow* window, int width, int height) {
+			WindowDate& data = *(WindowDate*)glfwGetWindowUserPointer(window);
+			data.Width = width;
+			data.Height = height;
+
+			WindowResizeEvent event(width, height);
+			data.EventCallback(event);
+			});
+
+		glfwSetCursorPosCallback(m_Window, [](GLFWwindow* window, double xpos, double ypos) {
+			WindowDate& data = *(WindowDate*)glfwGetWindowUserPointer(window);
+
+			MouseMoveEvent event(xpos, ypos);
+			data.EventCallback(event);
+			});
+
+		glfwSetWindowCloseCallback(m_Window, [](GLFWwindow* window) {
+			WindowDate& data = *(WindowDate*)glfwGetWindowUserPointer(window);
+
+			WindowCloseEvent event;
+			data.EventCallback(event);
+			});
+
+		glfwSetScrollCallback(m_Window, [](GLFWwindow* window, double xoffset, double yoffset) {
+			WindowDate& data = *(WindowDate*)glfwGetWindowUserPointer(window);
+			
+			MouseScrolledEvent event(xoffset,yoffset);
+			data.EventCallback(event);
+			});
+
+		glfwSetKeyCallback(m_Window, [](GLFWwindow* window, int key, int scancode, int action, int mods) {
+			WindowDate& data = *(WindowDate*)glfwGetWindowUserPointer(window);
+			
+			switch (action)
+			{
+					//`GLFW_PRESS`, `GLFW_RELEASE` or `GLFW_REPEAT`
+				case GLFW_PRESS:
+				{
+					KeyPressedEvent evnet(key, 0);
+					data.EventCallback(evnet);
+					break;
+				}
+				case GLFW_RELEASE:
+				{
+					KeyReleasedEvent event(key);
+					data.EventCallback(event);
+					break;
+				}
+				case GLFW_REPEAT:
+				{
+					KeyPressedEvent evnet(key, 1);
+					data.EventCallback(evnet);
+					break;
+				}
+			}
+			
+			});
+
+		glfwSetMouseButtonCallback(m_Window, [](GLFWwindow* window, int button, int action, int mods) {
+			WindowDate& data = *(WindowDate*)glfwGetWindowUserPointer(window);
+
+			switch (action)
+			{
+				case GLFW_PRESS:
+				{
+					MouseButtonPressedEvent event(button);
+					data.EventCallback(event);
+					break;
+				}
+				case GLFW_RELEASE:
+				{
+					MouseButtonReleasedEvent event(button);
+					data.EventCallback(event);
+					break;
+				}
+			}
+			
+			});
+
 	}
 
 	void HazQh::WindowsWindow::Shutdown()

@@ -28,4 +28,47 @@ namespace HazQh
 	private:
 		unsigned int m_Width, m_Height;
 	};
+
+	class HAZQH_API WindowCloseEvent : public Event
+	{
+	public:
+		WindowCloseEvent() {}
+
+		EVENT_CLASS_TYPE(WindowClose)
+		EVENT_CLASS_CATEGORY(EventCategoryApplication)
+
+			std::string ToString() const override
+		{
+			std::stringstream ss;
+			ss << "WindowCloseEvent! ";
+			return ss.str();
+		}
+	};
+
+	class HAZQH_API AppTickEvent : public Event
+	{
+	public:
+		AppTickEvent() {}
+
+		EVENT_CLASS_TYPE(AppTick)
+		EVENT_CLASS_CATEGORY(EventCategoryApplication)
+	};
+
+	class HAZQH_API AppUpdateEvent : public Event
+	{
+	public:
+		AppUpdateEvent() {}
+
+		EVENT_CLASS_TYPE(AppUpdate)
+		EVENT_CLASS_CATEGORY(EventCategoryApplication)
+	};
+
+	class HAZQH_API AppRenderEvent : public Event
+	{
+	public:
+		AppRenderEvent() {}
+
+		EVENT_CLASS_TYPE(AppRender)
+		EVENT_CLASS_CATEGORY(EventCategoryApplication)
+	};
 }

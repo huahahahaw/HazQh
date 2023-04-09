@@ -22,7 +22,10 @@ namespace HazQh
 		void SetVSync(bool enabled) override;
 
 
-		void IsVsync() const override;
+		bool IsVsync() const override;
+
+
+		void SetEventCallback(const EventCallbackFn) override;
 
 	private:
 		virtual void Init(const WindowProps& props);
@@ -36,6 +39,8 @@ namespace HazQh
 			std::string Title;
 			unsigned int Width, Height;
 			bool VSync;
+
+			EventCallbackFn EventCallback;
 		};
 
 		WindowDate m_Data;

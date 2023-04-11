@@ -27,6 +27,25 @@ namespace HazQh
 
 		HZ_CORE_INFO("{0}",e);
 
+		for (auto it = m_LayerStack.end();it != m_LayerStack.begin();)
+		{
+			(*--it)->OnEvent(e);
+			if (e.m_Handled)
+			{
+				break;
+			}
+		}
+
+	}
+
+	void Applicaiton::PushLayer(Layer* layer)
+	{
+		m_LayerStack.PushLayer(layer);
+	}
+
+	void Applicaiton::PushOverLayer(Layer* OverLayer)
+	{
+		m_LayerStack.PushOverLayer(OverLayer);
 	}
 
 	bool Applicaiton::OnWindowClose(WindowCloseEvent& event)
@@ -37,13 +56,16 @@ namespace HazQh
 
 	void Applicaiton::Run()
 	{
-		WindowResizeEvent e(1920,720);
-		HZ_TRACE(e);
-
 		while (m_Running)
 		{
 			glClearColor(1, 0, 1, 1);
 			glClear(GL_COLOR_BUFFER_BIT);
+
+			for (Layer* layer:m_LayerStack)
+			{
+				layer->OnUpdate();
+			}
+
 			m_Window->OnUpdate();
 		}
 	}

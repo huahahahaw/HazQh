@@ -34,6 +34,15 @@
     <ClInclude Include="src\HazQh\Events\KeyEvent.h">
       <Filter>HazQh\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\HazQh\Events\MouseEvent.h">
+      <Filter>HazQh\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HazQh\Layer.h">
+      <Filter>HazQh</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HazQh\LayerStack.h">
+      <Filter>HazQh</Filter>
+    </ClInclude>
     <ClInclude Include="src\HazQh\Log.h">
       <Filter>HazQh</Filter>
     </ClInclude>
@@ -47,6 +56,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\HazQh\Applicaiton.cpp">
+      <Filter>HazQh</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HazQh\Layer.cpp">
+      <Filter>HazQh</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HazQh\LayerStack.cpp">
       <Filter>HazQh</Filter>
     </ClCompile>
     <ClCompile Include="src\HazQh\Log.cpp">

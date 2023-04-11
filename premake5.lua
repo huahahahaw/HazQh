@@ -63,7 +63,8 @@ project "HazQh"
 
     filter "configurations:Debug"
         defines "HZ_DEBUG"
-        symbols "On"
+        optimize "On"
+        buildoptions "/MDd"
         defines
         {
             "HZ_ENABLE_ASSERTS",
@@ -71,11 +72,13 @@ project "HazQh"
 
     filter "configurations:Release"
         defines "HZ_Release"
-        symbols "On"
+        optimize "On"
+        buildoptions "/MD"
 
     filter "configurations:Dist"
         defines "HZ_Dist"
         symbols "On"
+        buildoptions "/MD"
 
 project "Sandbox"
     location "Sandbox"
@@ -116,11 +119,14 @@ project "Sandbox"
     filter "configurations:Debug"
         defines "HZ_DEBUG"
         symbols "On"
+        buildoptions "/MDd"
 
     filter "configurations:Release"
         defines "HZ_Release"
-        symbols "On"
+        optimize "On"
+        buildoptions "/MD"
 
     filter "configurations:Dist"
         defines "HZ_Dist"
-        symbols "On"
+        optimize "On"
+        buildoptions "/MD"

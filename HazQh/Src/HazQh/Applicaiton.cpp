@@ -2,8 +2,7 @@
 #include "Applicaiton.h"
 #include "Events/ApplicationEvent.h"
 #include "Log.h"
-#include <gl/GL.h>
-
+#include <glad/glad.h>
 
 namespace HazQh
 {
@@ -13,6 +12,9 @@ namespace HazQh
 	{
 		m_Window = std::unique_ptr<Window>(Window::Create());
 		m_Window->SetEventCallback(BIND_EVENT_FN(Applicaiton::OnEvent));
+
+		unsigned int id;
+		glGenVertexArrays(1, &id);
 	}
 
 	Applicaiton::~Applicaiton()

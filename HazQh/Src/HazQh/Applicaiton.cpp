@@ -8,8 +8,13 @@ namespace HazQh
 {
 #define BIND_EVENT_FN(x) std::bind(&Applicaiton::x, this, std::placeholders::_1)
 
+	Applicaiton* Applicaiton::s_Instance = nullptr;
+
 	Applicaiton::Applicaiton()
 	{
+		HZ_CORE_ASSERT(!s_Instance, "Application Already exists!");
+		s_Instance = this;
+
 		m_Window = std::unique_ptr<Window>(Window::Create());
 		m_Window->SetEventCallback(BIND_EVENT_FN(Applicaiton::OnEvent));
 
@@ -42,12 +47,14 @@ namespace HazQh
 
 	void Applicaiton::PushLayer(Layer* layer)
 	{
-		m_LayerStack.PushLayer(layer);
+		m_LayerStack.PushLayer(layer); 
+		layer->OnAttach();
 	}
 
 	void Applicaiton::PushOverLayer(Layer* OverLayer)
 	{
 		m_LayerStack.PushOverLayer(OverLayer);
+		OverLayer->OnAttach();
 	}
 
 	bool Applicaiton::OnWindowClose(WindowCloseEvent& event)
@@ -60,15 +67,16 @@ namespace HazQh
 	{
 		while (m_Running)
 		{
-			glClearColor(1, 0, 1, 1);
+			glClearColor(0, 0, 1, 1);
 			glClear(GL_COLOR_BUFFER_BIT);
-
+			
 			for (Layer* layer:m_LayerStack)
 			{
 				layer->OnUpdate();
 			}
 
 			m_Window->OnUpdate();
+
 		}
 	}
 }

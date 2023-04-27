@@ -4,3 +4,6 @@
 [submodule "HazQh/vendor/GLFW"]
 	path = HazQh/vendor/GLFW
 	url = https://github.com/huahahahaw/glfwForHazQh
+[submodule "HazQh/vendor/Imgui"]
+	path = HazQh/vendor/Imgui
+	url = https://github.com/huahahahaw/ImguiForHazQh

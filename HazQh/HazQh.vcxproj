@@ -80,7 +80,7 @@
       <PrecompiledHeaderFile>HzPch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>HAZQH_PLATFORM_WINDOWS;HAZQH_BUILD_DLL;HZ_DEBUG;HZ_ENABLE_ASSERTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>Src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>Src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -108,7 +108,7 @@
       <PrecompiledHeaderFile>HzPch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>HAZQH_PLATFORM_WINDOWS;HAZQH_BUILD_DLL;HZ_Release;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>Src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>Src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -136,7 +136,7 @@
       <PrecompiledHeaderFile>HzPch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>HAZQH_PLATFORM_WINDOWS;HAZQH_BUILD_DLL;HZ_Dist;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>Src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>Src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -163,18 +163,25 @@
     <ClInclude Include="src\HazQh\Events\Event.h" />
     <ClInclude Include="src\HazQh\Events\KeyEvent.h" />
     <ClInclude Include="src\HazQh\Events\MouseEvent.h" />
+    <ClInclude Include="src\HazQh\Imgui\ImguiLayer.h" />
     <ClInclude Include="src\HazQh\Layer.h" />
     <ClInclude Include="src\HazQh\LayerStack.h" />
     <ClInclude Include="src\HazQh\Log.h" />
+    <ClInclude Include="src\HazQh\Platform\OpenGL\imgui_impl_glfw.h" />
+    <ClInclude Include="src\HazQh\Platform\OpenGL\imgui_impl_opengl3.h" />
+    <ClInclude Include="src\HazQh\Platform\OpenGL\imgui_impl_opengl3_loader.h" />
     <ClInclude Include="src\HazQh\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\HazQh\Window.h" />
     <ClInclude Include="src\HzPch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\HazQh\Applicaiton.cpp" />
+    <ClCompile Include="src\HazQh\Imgui\ImguiLayer.cpp" />
     <ClCompile Include="src\HazQh\Layer.cpp" />
     <ClCompile Include="src\HazQh\LayerStack.cpp" />
     <ClCompile Include="src\HazQh\Log.cpp" />
+    <ClCompile Include="src\HazQh\Platform\OpenGL\imgui_impl_glfw.cpp" />
+    <ClCompile Include="src\HazQh\Platform\OpenGL\imgui_impl_opengl3.cpp" />
     <ClCompile Include="src\HazQh\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\HzPch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
@@ -186,6 +193,9 @@
     </ProjectReference>
     <ProjectReference Include="vendor\Glad\Glad.vcxproj">
       <Project>{BDD6857C-A90D-870D-52FA-6C103E10030F}</Project>
+    </ProjectReference>
+    <ProjectReference Include="vendor\imgui\ImGui.vcxproj">
+      <Project>{C0FF640D-2C14-8DBE-F595-301E616989EF}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

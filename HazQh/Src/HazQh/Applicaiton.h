@@ -21,11 +21,16 @@ namespace HazQh
 		void PushOverLayer(Layer* OverLayer);
 
 		bool OnWindowClose(WindowCloseEvent& event);
+
+		inline static Applicaiton& Get() { return *s_Instance; }
+		inline Window& GetWindow() { return *m_Window; }
 	private:
 		bool m_Running = true;
 
 		std::unique_ptr<Window> m_Window;
 		LayerStack m_LayerStack;
+	private:
+		static Applicaiton* s_Instance;
 	};
 
 	Applicaiton * CreateApplication();

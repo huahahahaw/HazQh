@@ -28,6 +28,7 @@ namespace HazQh
 
 		void SetEventCallback(const EventCallbackFn) override;
 
+		inline GLFWwindow* GetGLFWwindow() { return m_Window; }
 	private:
 		virtual void Init(const WindowProps& props);
 		virtual void Shutdown();

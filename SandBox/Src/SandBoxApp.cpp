@@ -25,7 +25,7 @@ class SandBox :public HazQh::Applicaiton
 public:
 	SandBox()
 	{
-		PushLayer(new Examplelayer());
+		//PushLayer(new Examplelayer());
 		PushOverLayer(new HazQh::ImguiLayer());
 	}
 	~SandBox()

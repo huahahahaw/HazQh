@@ -97,6 +97,7 @@ namespace HazQh
 			MouseMoveEvent event(xpos, ypos);
 			data.EventCallback(event);
 			});
+			
 
 		glfwSetWindowCloseCallback(m_Window, [](GLFWwindow* window) {
 			WindowDate& data = *(WindowDate*)glfwGetWindowUserPointer(window);
@@ -140,6 +141,12 @@ namespace HazQh
 			
 			});
 
+		glfwSetCharCallback(m_Window, [](GLFWwindow* window, unsigned int keyCode){
+			WindowDate& data = *(WindowDate*)glfwGetWindowUserPointer(window);
+			KeyTypedEvent event(keyCode);
+			data.EventCallback(event);
+		});
+
 		glfwSetMouseButtonCallback(m_Window, [](GLFWwindow* window, int button, int action, int mods) {
 			WindowDate& data = *(WindowDate*)glfwGetWindowUserPointer(window);
 
@@ -160,7 +167,7 @@ namespace HazQh
 			}
 			
 			});
-
+			
 	}
 
 	void HazQh::WindowsWindow::Shutdown()

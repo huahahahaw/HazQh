@@ -55,7 +55,7 @@ project "HazQh"
 
     filter "system:windows"
         cppdialect "C++17"
-        staticruntime "On"
+        staticruntime "off"
         systemversion "latest"
 
         defines
@@ -72,7 +72,7 @@ project "HazQh"
     filter "configurations:Debug"
         defines "HZ_DEBUG"
         optimize "On"
-        buildoptions "/MDd"
+        runtime "Debug"
         defines
         {
             "HZ_ENABLE_ASSERTS",
@@ -81,12 +81,12 @@ project "HazQh"
     filter "configurations:Release"
         defines "HZ_Release"
         optimize "On"
-        buildoptions "/MD"
+        runtime "Release"
 
     filter "configurations:Dist"
         defines "HZ_Dist"
         symbols "On"
-        buildoptions "/MD"
+        runtime "Release"
 
 project "Sandbox"
     location "Sandbox"
@@ -110,7 +110,7 @@ project "Sandbox"
 
     filter "system:windows"
         cppdialect "C++17"
-        staticruntime "On"
+        staticruntime "off"
         systemversion "latest"
 
     defines
@@ -127,14 +127,14 @@ project "Sandbox"
     filter "configurations:Debug"
         defines "HZ_DEBUG"
         symbols "On"
-        buildoptions "/MDd"
+        runtime "Debug"
 
     filter "configurations:Release"
         defines "HZ_Release"
         optimize "On"
-        buildoptions "/MD"
+        runtime "Release"
 
     filter "configurations:Dist"
         defines "HZ_Dist"
         optimize "On"
-        buildoptions "/MD"
+        runtime "Release"

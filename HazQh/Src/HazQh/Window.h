@@ -37,6 +37,8 @@ namespace HazQh
 		virtual void SetVSync(bool enabled) = 0;
 		virtual bool IsVsync() const = 0;
 
+		virtual void* GetNativeWindow() = 0;
+
 		static Window* Create(const WindowProps& props = WindowProps());
 	};
 

@@ -59,6 +59,11 @@ namespace HazQh
 		m_Data.EventCallback = EventCallback;
 	}
 
+	void* WindowsWindow::GetNativeWindow()
+	{
+		return m_Window;
+	}
+
 	void WindowsWindow::Init(const WindowProps& props)
 	{
 		m_Data.Title = props.Title;

@@ -4,6 +4,8 @@
 #include "Log.h"
 #include <glad/glad.h>
 
+#include "Input.h"
+
 namespace HazQh
 {
 #define BIND_EVENT_FN(x) std::bind(&Applicaiton::x, this, std::placeholders::_1)
@@ -76,6 +78,9 @@ namespace HazQh
 			}
 
 			m_Window->OnUpdate();
+
+			auto [x, y] = Input::GetCursorPos();
+			HZ_TRACE("GetCursorPos  x:{0},y:{1}", x, y);
 
 		}
 	}

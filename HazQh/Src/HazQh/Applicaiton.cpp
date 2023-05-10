@@ -79,8 +79,8 @@ namespace HazQh
 
 			m_Window->OnUpdate();
 
-			auto [x, y] = Input::GetCursorPos();
-			HZ_TRACE("GetCursorPos  x:{0},y:{1}", x, y);
+			//auto [x, y] = Input::GetCursorPos();
+			//HZ_TRACE("GetCursorPos  x:{0},y:{1}", x, y);
 
 		}
 	}

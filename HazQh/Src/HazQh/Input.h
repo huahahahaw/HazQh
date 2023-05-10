@@ -2,7 +2,7 @@
 
 namespace HazQh
 {
-	class Input
+	class HAZQH_API Input
 	{
 	public:
 		inline static bool IsKeyPressed(int keycode) { return s_Instance->IsKeyPressedImp(keycode); }

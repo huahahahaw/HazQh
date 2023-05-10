@@ -14,10 +14,12 @@ IncludeDir = { }
 IncludeDir["GLFW"] = "HazQh/vendor/GLFW/include"
 IncludeDir["Glad"] = "HazQh/vendor/Glad/include"
 IncludeDir["ImGui"] = "HazQh/vendor/imgui"
+IncludeDir["glm"] = "HazQh/vendor/glm"
 
 include "HazQh/vendor/GLFW"
 include "HazQh/vendor/Glad"
 include "HazQh/vendor/imgui"
+
 
 project "HazQh"
     location "HazQh"
@@ -33,7 +35,9 @@ project "HazQh"
     files
     {
         "%{prj.name}/src/**.h",
-        "%{prj.name}/src/**.cpp"
+        "%{prj.name}/src/**.cpp",
+        "%{prj.name}/vendor/glm/glm/**.inl",
+        "%{prj.name}/vendor/glm/glm/**.hpp",
     }
 
     includedirs
@@ -42,7 +46,8 @@ project "HazQh"
         "%{prj.name}/vendor/spdlog/include",
         "%{IncludeDir.GLFW}",
         "%{IncludeDir.Glad}",
-        "%{IncludeDir.ImGui}"
+        "%{IncludeDir.ImGui}",
+        "%{IncludeDir.glm}"
     }
 
     links
@@ -100,12 +105,15 @@ project "Sandbox"
     {
         "%{prj.name}/src/**.h",
         "%{prj.name}/src/**.cpp",
+        "%{prj.name}/vendor/glm/glm/**.inl",
+        "%{prj.name}/vendor/glm/glm/**.hpp",
     }
 
     includedirs
     {
         "HazQh/vendor/spdlog/include",
-        "HazQh/Src/"
+        "HazQh/Src/",
+        "%{IncludeDir.glm}"
     }
 
     filter "system:windows"

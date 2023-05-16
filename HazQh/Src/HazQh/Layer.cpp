@@ -19,7 +19,7 @@ namespace HazQh
 
 	}
 
-	void Layer::DeAttach()
+	void Layer::OnDeAttach()
 	{
 
 	}
@@ -28,6 +28,12 @@ namespace HazQh
 	{
 
 	}
+
+	void Layer::OnImGuiRender()
+	{
+
+	}
+
 }
 
 

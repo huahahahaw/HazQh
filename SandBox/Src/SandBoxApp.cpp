@@ -56,7 +56,6 @@ public:
 	SandBox()
 	{
 		PushLayer(new Examplelayer());
-		PushOverLayer(new HazQh::ImguiLayer());
 	}
 	~SandBox()
 	{

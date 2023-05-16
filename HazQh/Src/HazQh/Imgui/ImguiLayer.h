@@ -12,22 +12,13 @@ namespace HazQh
 		ImguiLayer();
 		~ImguiLayer();
 
-		void OnAttach();
-		void DeAttach();
-		void OnUpdate();
-		void OnEvent(Event& event);
+		virtual void OnAttach() override;
+		virtual void OnDeAttach() override;
+		void OnEvent(Event& event) override;
+		virtual void OnImGuiRender() override;
 
-	private:
-		bool OnMouseMoveEvent(MouseMoveEvent& e);
-		bool OnMouseScrolledEvent(MouseScrolledEvent& e);
-		bool OnMouseButtonPressedEvent(MouseButtonPressedEvent& e);
-		bool OnMouseButtonReleasedEvent(MouseButtonReleasedEvent& e);
-
-		bool OnKeyPressedEvent(KeyPressedEvent& e);
-		bool OnKeyReleasedEvent(KeyReleasedEvent& e);
-		bool OnKeyTypedEvent(KeyTypedEvent& e);
-
-		bool OnWindowResizeEvent(WindowResizeEvent& e);
+		void Begin();
+		void End();
 	private:
 		float m_time;
 	};

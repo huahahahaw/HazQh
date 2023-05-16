@@ -4,6 +4,7 @@
 #include "Events/ApplicationEvent.h"
 #include "Layer.h"
 #include "LayerStack.h"
+#include "Imgui/ImguiLayer.h"
 
 namespace HazQh 
 {
@@ -28,6 +29,7 @@ namespace HazQh
 		bool m_Running = true;
 
 		std::unique_ptr<Window> m_Window;
+		ImguiLayer* m_ImguiLayer;
 		LayerStack m_LayerStack;
 	private:
 		static Applicaiton* s_Instance;

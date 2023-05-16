@@ -20,8 +20,8 @@ namespace HazQh
 		m_Window = std::unique_ptr<Window>(Window::Create());
 		m_Window->SetEventCallback(BIND_EVENT_FN(Applicaiton::OnEvent));
 
-		unsigned int id;
-		glGenVertexArrays(1, &id);
+		m_ImguiLayer = new ImguiLayer();
+		PushOverLayer(m_ImguiLayer);
 	}
 
 	Applicaiton::~Applicaiton()
@@ -76,6 +76,13 @@ namespace HazQh
 			{
 				layer->OnUpdate();
 			}
+
+			m_ImguiLayer->Begin();
+			for (Layer* layer : m_LayerStack)
+			{
+				layer->OnImGuiRender();
+			}
+			m_ImguiLayer->End();
 
 			m_Window->OnUpdate();
 
